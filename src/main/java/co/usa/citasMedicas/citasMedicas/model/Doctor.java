@@ -22,7 +22,7 @@ public class Doctor implements Serializable {
     private String description;
 
     @ManyToOne
-    @JsonIgnoreProperties("doctor")
+    @JsonIgnoreProperties("doctors")
     private Especialidades specialty;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "doctor")
