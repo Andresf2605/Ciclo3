@@ -14,7 +14,7 @@ public class Reservacion {
     private Integer idReservation;
     private Date startDate;
     private Date devolutionDate;
-    private HttpStatus status;
+    private String status = "created";
     @ManyToOne
     @JsonIgnoreProperties({"reservations"})
     private Doctor doctor;
@@ -22,7 +22,7 @@ public class Reservacion {
     @JsonIgnoreProperties({"reservations","messages"})
     private Cliente client;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.REMOVE},mappedBy="reservations")
     @JsonIgnoreProperties("reservations")
     private Calificacion score;
 
@@ -58,11 +58,11 @@ public class Reservacion {
         this.devolutionDate = devolutionDate;
     }
 
-    public HttpStatus getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(HttpStatus status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

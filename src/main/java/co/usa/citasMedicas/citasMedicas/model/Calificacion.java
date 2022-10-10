@@ -1,5 +1,7 @@
 package co.usa.citasMedicas.citasMedicas.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,16 +9,20 @@ import javax.persistence.*;
 public class Calificacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idScore;
     private String messageText;
-    private int calification;
+    private Integer stars;
 
-    public Integer getId() {
-        return id;
+    @OneToOne
+    @JsonIgnoreProperties("score")
+    private Reservacion reservations;
+
+    public Integer getIdScore() {
+        return idScore;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdScore(Integer idScore) {
+        this.idScore = idScore;
     }
 
     public String getMessageText() {
@@ -27,11 +33,19 @@ public class Calificacion {
         this.messageText = messageText;
     }
 
-    public int getCalification() {
-        return calification;
+    public Integer getStars() {
+        return stars;
     }
 
-    public void setCalification(int calification) {
-        this.calification = calification;
+    public void setStars(Integer stars) {
+        this.stars = stars;
+    }
+
+    public Reservacion getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(Reservacion reservations) {
+        this.reservations = reservations;
     }
 }

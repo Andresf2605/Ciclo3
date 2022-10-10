@@ -21,7 +21,7 @@ public class ReservacionService {
         return reservacionRepository.getReservacionById(id);
     }
     public Reservacion save(Reservacion reservacion){
-            reservacion.setStatus(HttpStatus.CREATED);
+
             return reservacionRepository.save(reservacion);
 //        if(reservacion.getIdReservation() ==null){
 //        }else {
