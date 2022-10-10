@@ -45,11 +45,11 @@ public class Especialidades implements Serializable {
         this.description = description;
     }
 
-    public List<Doctor> getDoctor() {
+    public List<Doctor> getDoctors() {
         return doctors;
     }
 
-    public void setDoctor(List<Doctor> doctor) {
-        this.doctors = doctor;
+    public void setDoctors(List<Doctor> doctors) {
+        this.doctors = doctors;
     }
 }
