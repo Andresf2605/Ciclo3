@@ -20,16 +20,16 @@ public class DoctorService {
         return doctorRepository.getDoctorById(id);
     }
     public Doctor saveDoctor(Doctor doctor){
-        if(doctor.getId()==null){
             return doctorRepository.saveDoctor(doctor);
-        }else {
-            Optional<Doctor> checkDoctor = doctorRepository.getDoctorById(doctor.getId());
-            if (checkDoctor.isEmpty()){
-                return doctorRepository.saveDoctor(doctor);
-            }else {
-                return doctor;
-            }
-        }
+//        if(doctor.getId()==null){
+//        }else {
+//            Optional<Doctor> checkDoctor = doctorRepository.getDoctorById(doctor.getId());
+//            if (checkDoctor.isEmpty()){
+//                return doctorRepository.saveDoctor(doctor);
+//            }else {
+//                return doctor;
+//            }
+//        }
     }
     public void deleteDoctor(Doctor doctor){
         doctorRepository.deleteDoctor(doctor);

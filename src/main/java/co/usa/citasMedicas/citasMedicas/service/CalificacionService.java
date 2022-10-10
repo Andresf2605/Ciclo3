@@ -19,16 +19,17 @@ public class CalificacionService {
         return calificacionRepository.getCalificacionById(id);
     }
     public Calificacion save(Calificacion calificacion){
-        if(calificacion.getId() == null) {
             return calificacionRepository.save(calificacion);
-        }else{
-            Optional<Calificacion> checkCalificacion = calificacionRepository.getCalificacionById(calificacion.getId());
-            if(checkCalificacion.isEmpty()){
-                return calificacionRepository.save(calificacion);
-            }else {
-                return calificacion;
-            }
-        }
+//        if(calificacion.getId() == null) {
+//        }
+//        else{
+//            Optional<Calificacion> checkCalificacion = calificacionRepository.getCalificacionById(calificacion.getId());
+//            if(checkCalificacion.isEmpty()){
+//                return calificacionRepository.save(calificacion);
+//            }else {
+//                return calificacion;
+//            }
+//        }
     }
     public void delete(Calificacion calificacion){
         calificacionRepository.delete(calificacion);

@@ -21,18 +21,18 @@ public class ReservacionService {
         return reservacionRepository.getReservacionById(id);
     }
     public Reservacion save(Reservacion reservacion){
-        if(reservacion.getIdReservation() ==null){
             reservacion.setStatus(HttpStatus.CREATED);
             return reservacionRepository.save(reservacion);
-        }else {
-            Optional<Reservacion> checkReservacion = reservacionRepository.getReservacionById(reservacion.getIdReservation());
-            if(checkReservacion.isEmpty()){
-                reservacion.setStatus(HttpStatus.CREATED);
-                return reservacionRepository.save(reservacion);
-            }else {
-                return reservacion;
-            }
-        }
+//        if(reservacion.getIdReservation() ==null){
+//        }else {
+//            Optional<Reservacion> checkReservacion = reservacionRepository.getReservacionById(reservacion.getIdReservation());
+//            if(checkReservacion.isEmpty()){
+//                reservacion.setStatus(HttpStatus.CREATED);
+//                return reservacionRepository.save(reservacion);
+//            }else {
+//                return reservacion;
+//            }
+//        }
     }
     public void delete(Reservacion reservacion){
         reservacionRepository.delete(reservacion);

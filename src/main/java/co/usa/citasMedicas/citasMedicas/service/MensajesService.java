@@ -19,16 +19,16 @@ public class MensajesService {
         return mensajesRepository.getMensajeById(id);
     }
     public Mensajes save(Mensajes mensajes){
-        if (mensajes.getIdMessage() == null){
         return mensajesRepository.save(mensajes);
-        }else {
-            Optional<Mensajes> checkMensajes = mensajesRepository.getMensajeById(mensajes.getIdMessage());
-            if (checkMensajes.isEmpty()){
-                return mensajesRepository.save(mensajes);
-            }else{
-                return mensajes;
-            }
-        }
+//        if (mensajes.getIdMessage() == null){
+//        }else {
+//            Optional<Mensajes> checkMensajes = mensajesRepository.getMensajeById(mensajes.getIdMessage());
+//            if (checkMensajes.isEmpty()){
+//                return mensajesRepository.save(mensajes);
+//            }else{
+//                return mensajes;
+//            }
+//        }
     }
     public void delete(Mensajes mensajes){
         mensajesRepository.delete(mensajes);

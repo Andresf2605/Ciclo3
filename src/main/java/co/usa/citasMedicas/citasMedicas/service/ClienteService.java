@@ -20,16 +20,16 @@ public class ClienteService {
         return clienteRepository.getClienteById(id);
     }
     public Cliente save(Cliente cliente){
-        if(cliente.getIdClient() == null){
         return clienteRepository.save(cliente);
-        }else {
-            Optional<Cliente> checkCliente = clienteRepository.getClienteById(cliente.getIdClient());
-            if(checkCliente.isEmpty()){
-                return clienteRepository.save(cliente);
-            }else {
-                return cliente;
-            }
-        }
+//        if(cliente.getIdClient() == null){
+//        }else {
+//            Optional<Cliente> checkCliente = clienteRepository.getClienteById(cliente.getIdClient());
+//            if(checkCliente.isEmpty()){
+//                return clienteRepository.save(cliente);
+//            }else {
+//                return cliente;
+//            }
+//        }
     }
 
     public void delete(Cliente cliente){

@@ -21,16 +21,16 @@ public class EspecialidadService {
         return especialidadRepository.getEspecialidadById(id);
     }
     public Especialidades saveEspecialidad(Especialidades especialidad){
-        if(especialidad.getId()==null){
             return especialidadRepository.saveEspecialidad(especialidad);
-        }else {
-            Optional<Especialidades> checkDoctor = especialidadRepository.getEspecialidadById(especialidad.getId());
-            if (checkDoctor.isEmpty()){
-                return especialidadRepository.saveEspecialidad(especialidad);
-            }else {
-                return especialidad;
-            }
-        }
+//        if(especialidad.getId()==null){
+//        }else {
+//            Optional<Especialidades> checkDoctor = especialidadRepository.getEspecialidadById(especialidad.getId());
+//            if (checkDoctor.isEmpty()){
+//                return especialidadRepository.saveEspecialidad(especialidad);
+//            }else {
+//                return especialidad;
+//            }
+//        }
     }
     public void deleteEspecialidad(Especialidades especialidad){
         especialidadRepository.deleteespecialidad(especialidad);
