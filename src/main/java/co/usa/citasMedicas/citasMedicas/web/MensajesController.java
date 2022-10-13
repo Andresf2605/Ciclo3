@@ -30,10 +30,10 @@ public class MensajesController {
         return mensajesService.save(mensajes);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@RequestBody Mensajes mensajes){
-        mensajesService.delete(mensajes);
+    public Boolean delete(@PathVariable("id") int id){
+        return mensajesService.delete(id);
     }
 
 }

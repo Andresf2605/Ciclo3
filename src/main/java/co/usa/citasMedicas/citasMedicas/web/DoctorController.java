@@ -32,9 +32,9 @@ public class DoctorController {
     public Doctor saveDoctor(@RequestBody Doctor doctor){
         return doctorService.saveDoctor(doctor);
     }
-    @DeleteMapping("/delete")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteDoctor(@RequestBody Doctor doctor){
-        doctorService.deleteDoctor(doctor);
+    public boolean deleteDoctor(@PathVariable("id") int id){
+        return doctorService.deleteDoctor(id);
     }
 }

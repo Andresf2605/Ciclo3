@@ -29,10 +29,10 @@ public class ClienteController {
     public Cliente saveCliente(@RequestBody Cliente cliente){
         return clienteService.save(cliente);
     }
-    @DeleteMapping("/delete")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCliente(@RequestBody Cliente cliente){
-        clienteService.delete(cliente);
+    public Boolean deleteCliente(@PathVariable("id") int id){
+        return clienteService.delete(id);
     }
 
 }

@@ -19,19 +19,23 @@ public class CalificacionService {
         return calificacionRepository.getCalificacionById(id);
     }
     public Calificacion save(Calificacion calificacion){
+        if(calificacion.getIdScore() == null) {
             return calificacionRepository.save(calificacion);
-//        if(calificacion.getId() == null) {
-//        }
-//        else{
-//            Optional<Calificacion> checkCalificacion = calificacionRepository.getCalificacionById(calificacion.getId());
-//            if(checkCalificacion.isEmpty()){
-//                return calificacionRepository.save(calificacion);
-//            }else {
-//                return calificacion;
-//            }
-//        }
+        }
+        else{
+            Optional<Calificacion> checkCalificacion = calificacionRepository.getCalificacionById(calificacion.getIdScore());
+            if(checkCalificacion.isEmpty()){
+                return calificacionRepository.save(calificacion);
+            }else {
+                return calificacion;
+            }
+        }
     }
-    public void delete(Calificacion calificacion){
+    public Boolean delete(int id){
+        Boolean aboolean = getCalificacionById(id).map(calificacion -> {
         calificacionRepository.delete(calificacion);
+        return true;
+        }).orElse(false);
+        return aboolean;
     }
 }

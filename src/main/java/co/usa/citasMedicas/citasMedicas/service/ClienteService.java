@@ -20,19 +20,23 @@ public class ClienteService {
         return clienteRepository.getClienteById(id);
     }
     public Cliente save(Cliente cliente){
+        if(cliente.getIdClient() == null){
         return clienteRepository.save(cliente);
-//        if(cliente.getIdClient() == null){
-//        }else {
-//            Optional<Cliente> checkCliente = clienteRepository.getClienteById(cliente.getIdClient());
-//            if(checkCliente.isEmpty()){
-//                return clienteRepository.save(cliente);
-//            }else {
-//                return cliente;
-//            }
-//        }
+        }else {
+            Optional<Cliente> checkCliente = clienteRepository.getClienteById(cliente.getIdClient());
+            if(checkCliente.isEmpty()){
+                return clienteRepository.save(cliente);
+            }else {
+                return cliente;
+            }
+        }
     }
 
-    public void delete(Cliente cliente){
+    public boolean delete(int id){
+        Boolean aboolean = getClienteById(id).map(cliente->{
         clienteRepository.delete(cliente);
+        return true;
+        }).orElse(false);
+        return aboolean;
     }
 }

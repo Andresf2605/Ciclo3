@@ -32,10 +32,10 @@ public class EspecialidadController {
         return especialidadService.saveEspecialidad(especialidades);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteEspecialidad(@RequestBody Especialidades especialidades){
-        especialidadService.deleteEspecialidad(especialidades);
+    public Boolean deleteEspecialidad(@PathVariable("id") int id){
+        return especialidadService.deleteEspecialidad(id);
     }
 
 }

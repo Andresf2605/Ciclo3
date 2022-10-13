@@ -3,6 +3,7 @@ package co.usa.citasMedicas.citasMedicas.web;
 import co.usa.citasMedicas.citasMedicas.model.Calificacion;
 import co.usa.citasMedicas.citasMedicas.service.CalificacionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,8 +28,9 @@ public class CalificacionController {
     public Calificacion save(@RequestBody Calificacion calificacion){
         return calificacionService.save(calificacion);
     }
-    @DeleteMapping("/delete")
-    public void delete(@RequestBody Calificacion calificacion){
-        calificacionService.delete(calificacion);
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public Boolean delete(@PathVariable int id){
+        return calificacionService.delete(id);
     }
 }

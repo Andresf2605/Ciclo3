@@ -20,18 +20,25 @@ public class DoctorService {
         return doctorRepository.getDoctorById(id);
     }
     public Doctor saveDoctor(Doctor doctor){
+        if(doctor.getId()==null){
             return doctorRepository.saveDoctor(doctor);
-//        if(doctor.getId()==null){
-//        }else {
-//            Optional<Doctor> checkDoctor = doctorRepository.getDoctorById(doctor.getId());
-//            if (checkDoctor.isEmpty()){
-//                return doctorRepository.saveDoctor(doctor);
-//            }else {
-//                return doctor;
-//            }
-//        }
+        }else {
+            Optional<Doctor> checkDoctor = doctorRepository.getDoctorById(doctor.getId());
+            if (checkDoctor.isEmpty()){
+                return doctorRepository.saveDoctor(doctor);
+            }else {
+                return doctor;
+            }
+        }
     }
     public void deleteDoctor(Doctor doctor){
         doctorRepository.deleteDoctor(doctor);
+    }
+    public boolean deleteDoctor(int id) {
+        Boolean aBoolean = getDoctorById(id).map(doctor -> {
+            doctorRepository.deleteDoctor(doctor);
+            return true;
+        }).orElse(false);
+        return aBoolean;
     }
 }

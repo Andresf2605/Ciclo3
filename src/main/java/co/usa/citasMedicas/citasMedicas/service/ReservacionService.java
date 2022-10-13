@@ -22,19 +22,22 @@ public class ReservacionService {
     }
     public Reservacion save(Reservacion reservacion){
 
+        if(reservacion.getIdReservation() ==null){
             return reservacionRepository.save(reservacion);
-//        if(reservacion.getIdReservation() ==null){
-//        }else {
-//            Optional<Reservacion> checkReservacion = reservacionRepository.getReservacionById(reservacion.getIdReservation());
-//            if(checkReservacion.isEmpty()){
-//                reservacion.setStatus(HttpStatus.CREATED);
-//                return reservacionRepository.save(reservacion);
-//            }else {
-//                return reservacion;
-//            }
-//        }
+        }else {
+            Optional<Reservacion> checkReservacion = reservacionRepository.getReservacionById(reservacion.getIdReservation());
+            if(checkReservacion.isEmpty()){
+                return reservacionRepository.save(reservacion);
+            }else {
+                return reservacion;
+            }
+        }
     }
-    public void delete(Reservacion reservacion){
+    public Boolean delete(int id){
+        Boolean aboolean = getReservacionById(id).map(reservacion -> {
         reservacionRepository.delete(reservacion);
+        return true;
+        }).orElse(false);
+        return aboolean;
     }
 }
