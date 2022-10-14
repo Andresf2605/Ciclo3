@@ -3,6 +3,7 @@ package co.usa.citasMedicas.citasMedicas.repository;
 import co.usa.citasMedicas.citasMedicas.model.Doctor;
 import co.usa.citasMedicas.citasMedicas.model.Especialidades;
 import co.usa.citasMedicas.citasMedicas.repository.crud.EspecialidadCrudRepository;
+import co.usa.citasMedicas.citasMedicas.service.EspecialidadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

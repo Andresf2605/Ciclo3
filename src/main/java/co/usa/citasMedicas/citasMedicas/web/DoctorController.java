@@ -32,6 +32,12 @@ public class DoctorController {
     public Doctor saveDoctor(@RequestBody Doctor doctor){
         return doctorService.saveDoctor(doctor);
     }
+
+   @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Doctor updateDoctor(@RequestBody Doctor doctor){
+        return doctorService.updateDoctor(doctor);
+    }
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean deleteDoctor(@PathVariable("id") int id){

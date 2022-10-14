@@ -1,6 +1,7 @@
 package co.usa.citasMedicas.citasMedicas.web;
 
 import co.usa.citasMedicas.citasMedicas.model.Cliente;
+import co.usa.citasMedicas.citasMedicas.model.Doctor;
 import co.usa.citasMedicas.citasMedicas.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,6 +29,12 @@ public class ClienteController {
     @ResponseStatus(HttpStatus.CREATED)
     public Cliente saveCliente(@RequestBody Cliente cliente){
         return clienteService.save(cliente);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Cliente updateCliente(@RequestBody Cliente cliente){
+        return clienteService.updateCliente(cliente);
     }
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

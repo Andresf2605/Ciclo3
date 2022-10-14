@@ -17,7 +17,7 @@ public class Doctor implements Serializable {
     private String department;
 //    @Column(name = "year")
     @Column(name= "`years`")
-    private int year;
+    private Integer year;
     @Column(name = "description")
     private String description;
 
@@ -74,11 +74,11 @@ public class Doctor implements Serializable {
         this.department = department;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 

@@ -32,6 +32,28 @@ public class EspecialidadService {
             }
         }
     }
+    public Especialidades updateEspecialidad(Especialidades especialidades){
+        if(especialidades.getId()!=null){
+            Optional<Especialidades> e = getEspecialidadById(especialidades.getId());
+            if(!e.isEmpty()){
+                if(especialidades.getDescription()!=null){
+                    e.get().setDescription(especialidades.getDescription());
+                }
+                if (especialidades.getDoctors()!=null){
+                    e.get().setDoctors(especialidades.getDoctors());
+                }
+                if (especialidades.getName()!=null){
+                    e.get().setName(especialidades.getName());
+                }
+                especialidadRepository.saveEspecialidad(e.get());
+                return e.get();
+            }else {
+                return especialidades;
+            }
+        }else {
+            return especialidades;
+        }
+    }
     public Boolean deleteEspecialidad(int id){
         Boolean aboolean = getEspecialidadById(id).map(especialidad->{
         especialidadRepository.deleteespecialidad(especialidad);

@@ -31,9 +31,42 @@ public class DoctorService {
             }
         }
     }
-    public void deleteDoctor(Doctor doctor){
-        doctorRepository.deleteDoctor(doctor);
+
+    public Doctor updateDoctor(Doctor doctor){
+        if (doctor.getId()!=null){
+            Optional<Doctor> e = getDoctorById(doctor.getId());
+            if (!e.isEmpty()){
+                if (doctor.getDepartment()!=null){
+                    e.get().setDepartment(doctor.getDepartment());
+                }
+                if (doctor.getDescription()!=null){
+                    e.get().setDescription(doctor.getDescription());
+                }
+                if(doctor.getMessages()!=null){
+                    e.get().setMessages(doctor.getMessages());
+                }
+                if (doctor.getName()!=null){
+                    e.get().setName(doctor.getName());
+                }
+                if (doctor.getReservations()!=null){
+                    e.get().setReservations(doctor.getReservations());
+                }
+                if (doctor.getSpecialty()!=null){
+                    e.get().setSpecialty(doctor.getSpecialty());
+                }
+                if (doctor.getYear()!=null){
+                    e.get().setYear(doctor.getYear());
+                }
+                doctorRepository.saveDoctor(e.get());
+                return e.get();
+            }else {
+                return doctor;
+            }
+        }else {
+            return doctor;
+        }
     }
+
     public boolean deleteDoctor(int id) {
         Boolean aBoolean = getDoctorById(id).map(doctor -> {
             doctorRepository.deleteDoctor(doctor);
