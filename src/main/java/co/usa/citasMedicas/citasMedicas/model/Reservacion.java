@@ -1,7 +1,6 @@
 package co.usa.citasMedicas.citasMedicas.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.springframework.http.HttpStatus;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -20,18 +19,19 @@ public class Reservacion implements Serializable {
     @JsonIgnoreProperties({"reservations"})
     private Doctor doctor;
     @ManyToOne
+    @JoinColumn(name = "clientId")
     @JsonIgnoreProperties({"reservations","messages"})
     private Cliente client;
 
-    @OneToOne(cascade = {CascadeType.REMOVE},mappedBy="reservations")
-    @JsonIgnoreProperties("reservations")
-    private Calificacion score;
+    @OneToOne(cascade = {CascadeType.REMOVE},mappedBy="reservation")
+    @JsonIgnoreProperties("reservation")
+    private Score score;
 
-    public Calificacion getScore() {
+    public Score getScore() {
         return score;
     }
 
-    public void setScore(Calificacion score) {
+    public void setScore(Score score) {
         this.score = score;
     }
 

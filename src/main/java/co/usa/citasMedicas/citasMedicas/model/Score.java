@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "score")
-public class Calificacion implements Serializable {
+public class Score implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idScore;
@@ -16,7 +16,7 @@ public class Calificacion implements Serializable {
 
     @OneToOne
     @JsonIgnoreProperties("score")
-    private Reservacion reservations;
+    private Reservacion reservation;
 
     public Integer getIdScore() {
         return idScore;
@@ -42,11 +42,11 @@ public class Calificacion implements Serializable {
         this.stars = stars;
     }
 
-    public Reservacion getReservations() {
-        return reservations;
+    public Reservacion getReservation() {
+        return reservation;
     }
 
-    public void setReservations(Reservacion reservations) {
-        this.reservations = reservations;
+    public void setReservation(Reservacion reservation) {
+        this.reservation = reservation;
     }
 }
