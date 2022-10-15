@@ -27,6 +27,7 @@ public class ReservacionController {
         return reservacionService.getReservacionById(id);
     }
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public Reservacion save(@RequestBody Reservacion reservacion){
         return reservacionService.save(reservacion);
     }
